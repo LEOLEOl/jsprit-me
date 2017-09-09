@@ -1,0 +1,155 @@
+{
+    "locations": [
+        {
+            "locationCode": "1",
+            "locationName": "157 PHAN DANG LUU, P.01, Q.PHU NHUAN, TP.HO CHI MINH",
+            "timeWindows": [
+                {
+                    "start": 1491760800,
+                    "end": 1491840000
+                },
+                {
+                    "start": 1491847200,
+                    "end": 1491926400
+                }
+            ]
+        }
+    ],
+    "shipments":	[
+        {
+            "shipCode":"s3",
+            "pickupServiceTime":"0.0",
+            "deliveryServiceTime":"0.0",
+            "weight":"1.0",
+            "volume":"1.0",
+            "pickupLocationCode":"1",
+            "deliveryLocationCode":"4",
+            "pickupTimeWindows": [],
+            "deliveryTimeWindows": []
+        },
+        {
+            "shipCode":"s2",
+            "pickupServiceTime":"0.0",
+            "deliveryServiceTime":"0.0",
+            "weight":"1.0",
+            "volume":"1.0",
+            "pickupLocationCode":"2",
+            "deliveryLocationCode":"3",
+            "pickupTimeWindows": [
+                {
+                    "start":1496102400,
+                    "end":1496188800
+                }
+            ],
+            "deliveryTimeWindows": [
+                {
+                    "start":1496188800,
+                    "end":1496275200
+                }
+            ]
+        },
+        {
+            "shipCode":"s1",
+            "pickupServiceTime":"0.0",
+            "deliveryServiceTime":"0.0",
+            "weight":"1.0",
+            "volume":"1.0",
+            "pickupLocationCode":"1",
+            "deliveryLocationCode":"3",
+            "pickupTimeWindows": [
+                {
+                    "start":1496275200,
+                    "end":1496361600
+                }
+            ],
+            "deliveryTimeWindows": [
+                {
+                    "start":1496361600,
+                    "end":1496448000
+                }
+            ]
+        }
+    ],
+    "costUnits": [
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "1",
+            "distance": "0.0",
+            "travelTime": "1.0"
+        },
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "2",
+            "distance": "0.0",
+            "travelTime": "3.0"
+        },
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "3",
+            "distance": "0.0",
+            "travelTime": "100.0"
+        },
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "100.0"
+        },
+        {
+            "srcLocationCode": "1",
+            "desLocationCode": "2",
+            "distance": "0.0",
+            "travelTime": "1.0"
+        },
+        {
+            "srcLocationCode": "1",
+            "desLocationCode": "3",
+            "distance": "0.0",
+            "travelTime": "10.0"
+        },
+        {
+            "srcLocationCode": "1",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "100.0"
+        },
+        {
+            "srcLocationCode": "2",
+            "desLocationCode": "3",
+            "distance": "0.0",
+            "travelTime": "10.0"
+        },
+        {
+            "srcLocationCode": "2",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "100.0"
+        },
+        {
+            "srcLocationCode": "3",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "20.0"
+        }
+    ],
+    "vehicles": [
+        {
+            "id":"1",
+            "locationCode": "0",
+            "endLocationCode": "3",
+            "maxWeight": 5.0,
+            "minWeight": 0.0,
+            "maxVolume": 5.0,
+            "minVolume": 0.0
+        },
+        {
+            "id":"2",
+            "locationCode": "0",
+            "endLocationCode": "3",
+            "maxWeight": 5.0,
+            "minWeight": 0.0,
+            "maxVolume": 5.0,
+            "minVolume": 0.0
+        }
+    ]
+}

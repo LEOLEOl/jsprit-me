@@ -1,0 +1,76 @@
+﻿{
+  "timeAtRequest": 1503334800,
+  "locations": [
+    {
+      "locationCode": "4",
+      "locationName": "347-353 Hùng Vương, Phường 9, Quận 5, Tp. HCM",
+      "timeWindows": [
+        {
+          "start": 1503338400,
+          "end": 1803417600
+        }
+      ]
+    },
+    {
+      "locationCode": "14",
+      "locationName": "262/20 Lạc Long Quân, Phường 10, Quận 11, Tp. HCM",
+      "timeWindows": [
+        {
+          "start": 1503338400,
+          "end": 1803417600
+        }
+      ]
+    }
+  ],
+  "shipments": [
+    {
+      "shipCode": "S1",
+      "pickupServiceTime": 1.0,
+      "deliveryServiceTime": 1.0,
+      "pickupLocationCode": "12",
+      "deliveryLocationCode": "4",
+      "weight": "0.5",
+      "volume": "0.5",
+      "pickupTimeWindows": [
+        {
+          "start": 1503338400,
+          "end": 1803417600
+        }
+      ],
+      "deliveryTimeWindows": [
+        {
+          "start": 1503338400,
+          "end": 1803417600
+        }
+      ]
+    }
+  ],
+  "costUnits": [
+    {
+      "srcLocationCode": "2",
+      "desLocationCode": "14",
+      "distance": "6.56",
+      "travelTime": "0.13"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "V1",
+      "startLocationCode": "1",
+      "endLocationCode": "1",
+      "maxWeight": "1.5",
+      "minWeight": "1.5",
+      "maxVolume": "10",
+      "minVolume": "10",
+      "fixedCode": 10.0,
+      "perWaitingTimeCost": 1.0,
+      "perServiceTimeCost": 1.0,
+      "breakTime": {
+        "breakCode": "2",
+        "serviceTime": 10.0,
+        "timeWindows": []
+      }
+    }
+  ],
+  "wayPoints": []
+}

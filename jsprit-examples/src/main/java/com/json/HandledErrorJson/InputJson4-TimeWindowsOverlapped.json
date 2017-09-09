@@ -1,0 +1,345 @@
+﻿{
+    "timeAtRequest": 1492966800,
+    "locations": [
+        {
+            "locationCode": "9595",
+            "locationName": "CUS1_KHO1",
+            "timeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ]
+        },
+        {
+            "locationCode": "9596",
+            "locationName": "MB_NPP1_DC1",
+            "timeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ]
+        },
+        {
+            "locationCode": "9597",
+            "locationName": "MB_NPP1_DC2",
+            "timeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ]
+        },
+        {
+            "locationCode": "10844",
+            "locationName": "Khu CN Sóng Thần",
+            "timeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ]
+        }
+    ],
+    "shipments": [
+        {
+            "shipCode": "1",
+            "pickupServiceTime": 0.0,
+            "deliveryServiceTime": 0.0,
+            "pickupLocationCode": "9595",
+            "deliveryLocationCode": "9596",
+            "weight": "5",
+            "volume": "8",
+            "pickupTimeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ],
+            "deliveryTimeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ]
+        },
+        {
+            "shipCode": "2",
+            "pickupServiceTime": 0.0,
+            "deliveryServiceTime": 0.0,
+            "pickupLocationCode": "9595",
+            "deliveryLocationCode": "9597",
+            "weight": "2",
+            "volume": "2",
+            "pickupTimeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ],
+            "deliveryTimeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ]
+        },
+        {
+            "shipCode": "3",
+            "pickupServiceTime": 0.0,
+            "deliveryServiceTime": 0.0,
+            "pickupLocationCode": "9595",
+            "deliveryLocationCode": "9596",
+            "weight": "3",
+            "volume": "3",
+            "pickupTimeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ],
+            "deliveryTimeWindows": [
+                {
+                    "start": 1493040866,
+                    "end": 1493080466
+                },
+                {
+                    "start": 1493049600,
+                    "end": 1493132400
+                }
+            ]
+        }
+    ],
+    "costUnits": [
+        {
+            "srcLocationCode": "9595",
+            "desLocationCode": "9596",
+            "distance": "12",
+            "travelTime": "2"
+        },
+        {
+            "srcLocationCode": "9595",
+            "desLocationCode": "9597",
+            "distance": "11",
+            "travelTime": "2.5"
+        },
+        {
+            "srcLocationCode": "9595",
+            "desLocationCode": "9671",
+            "distance": "12",
+            "travelTime": "2"
+        },
+        {
+            "srcLocationCode": "9596",
+            "desLocationCode": "9595",
+            "distance": "32",
+            "travelTime": "20.46"
+        },
+        {
+            "srcLocationCode": "9596",
+            "desLocationCode": "9597",
+            "distance": "12",
+            "travelTime": "20.46"
+        },
+        {
+            "srcLocationCode": "9596",
+            "desLocationCode": "9671",
+            "distance": "12",
+            "travelTime": "20.52"
+        },
+        {
+            "srcLocationCode": "9597",
+            "desLocationCode": "9595",
+            "distance": "11",
+            "travelTime": "20.46"
+        },
+        {
+            "srcLocationCode": "9597",
+            "desLocationCode": "9596",
+            "distance": "8",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "9597",
+            "desLocationCode": "9671",
+            "distance": "1620.87",
+            "travelTime": "20.52"
+        },
+        {
+            "srcLocationCode": "9671",
+            "desLocationCode": "9595",
+            "distance": "10.42",
+            "travelTime": "0.18"
+        },
+        {
+            "srcLocationCode": "9671",
+            "desLocationCode": "9596",
+            "distance": "1613.67",
+            "travelTime": "20.48"
+        },
+        {
+            "srcLocationCode": "9671",
+            "desLocationCode": "9597",
+            "distance": "1613.67",
+            "travelTime": "20.48"
+        },
+        {
+            "srcLocationCode": "9595",
+            "desLocationCode": "10844",
+            "distance": "2",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "9596",
+            "desLocationCode": "10844",
+            "distance": "1",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "9597",
+            "desLocationCode": "10844",
+            "distance": "3",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "10844",
+            "desLocationCode": "9595",
+            "distance": "2",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "10844",
+            "desLocationCode": "9596",
+            "distance": "4",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "10844",
+            "desLocationCode": "9597",
+            "distance": "5",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "10844",
+            "desLocationCode": "9671",
+            "distance": "12",
+            "travelTime": "3"
+        },
+        {
+            "srcLocationCode": "9671",
+            "desLocationCode": "10844",
+            "distance": "1",
+            "travelTime": "3"
+        }
+    ],
+    "vehicles": [
+        {
+            "id": "30",
+            "locationCode": "10844",
+            "endLocationCode": "10844",
+            "maxWeight": "2",
+            "minWeight": "1.5",
+            "maxVolume": "2",
+            "minVolume": "1.5",
+            "fixedCost": 10,
+            "perWaitingTimeCost": 1.0,
+            "perServiceTimeCost": 1.0,
+            "breakTime": {
+                "breakCode": "2",
+                "serviceTime": 10,
+                "timeWindows": []
+            }
+        },
+        {
+            "id": "40",
+            "locationCode": "10844",
+            "endLocationCode": "10844",
+            "maxWeight": "2",
+            "minWeight": "1.5",
+            "maxVolume": "2",
+            "minVolume": "1.5",
+            "fixedCost": 10,
+            "perWaitingTimeCost": 1.0,
+            "perServiceTimeCost": 1.0,
+            "breakTime": {
+                "breakCode": "2",
+                "serviceTime": 10,
+                "timeWindows": []
+            }
+        },
+        {
+            "id": "50",
+            "locationCode": "10844",
+            "endLocationCode": "10844",
+            "maxWeight": "3",
+            "minWeight": "2",
+            "maxVolume": "3",
+            "minVolume": "2",
+            "fixedCost": 10,
+            "perWaitingTimeCost": 1.0,
+            "perServiceTimeCost": 1.0,
+            "breakTime": {
+                "breakCode": "2",
+                "serviceTime": 10,
+                "timeWindows": []
+            }
+        }
+    ],
+    "wayPoints": [
+        {
+            "from": "0",
+            "to": "4",
+            "midPoints": [
+                {
+                    "point":"A2",
+                    "distanceFromRoot":0
+                },
+                {
+                    "point":"A3",
+                    "distanceFromRoot":0
+                },
+                {
+                    "point":"A4",
+                    "distanceFromRoot":0
+                }
+            ]
+        }
+    ]
+}
