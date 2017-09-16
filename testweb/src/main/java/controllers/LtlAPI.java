@@ -29,7 +29,7 @@ public class LtlAPI extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/json;charset=utf-8");
+        resp.setContentType("application/jsontest;charset=utf-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.getWriter().write("GET\nWelcome to OCVehicleRoutingProblem!\n Ha Duc Viet");
     }
@@ -52,7 +52,7 @@ public class LtlAPI extends HttpServlet {
         jsonStringOutput = gson.toJson(obj);
 
         // Output
-        resp.setContentType("application/json;charset=utf-8");
+        resp.setContentType("application/jsontest;charset=utf-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         PrintWriter writer = resp.getWriter();
         writer.printf(jsonStringOutput);
