@@ -67,6 +67,7 @@
         <module>jsprit-io</module>
         <module>jsprit-examples</module>
         <module>jsprit-instances</module>
+        <module>viet-jsprit</module>
         <module>testweb</module>
     </modules>
 

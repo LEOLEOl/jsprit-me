@@ -1,4 +1,4 @@
-package com.floyd;
+package com.code.floyd;
 
 import junit.framework.TestCase;
 import org.junit.Test;

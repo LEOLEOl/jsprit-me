@@ -1,4 +1,4 @@
-package com.jsontest;
+package com.code.jsontest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,7 +47,7 @@ public class JsonTest extends TestCase{
     @Test
     public void testOverallPassedJson()
     {
-        final File folder = new File("src/main/java/com/jsontest/PassedJson");
+        final File folder = new File("src/test/java/com/samplejson/passedjson");
         File[] listFiles = folder.listFiles();
         if (listFiles == null) return;
         for (final File fileEntry: listFiles)
@@ -55,6 +55,7 @@ public class JsonTest extends TestCase{
                 System.out.printf(fileEntry.getName() + "\n");
                 int errCode = testJson(fileEntry.getAbsolutePath());
                 System.out.printf(Integer.toString(errCode));
+                System.out.print(errCode);
                 assert errCode == 0;
             }
     }
@@ -62,7 +63,7 @@ public class JsonTest extends TestCase{
     @Test
     public void testOverallHandledErrorJson()
     {
-        final File folder = new File("src/main/java/com/jsontest/handlederrorjson");
+        final File folder = new File("src/test/java/com/samplejson/handlederrorjson");
         File[] listFiles = folder.listFiles();
         if (listFiles == null) return;
         for (final File fileEntry: listFiles)

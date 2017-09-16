@@ -90,7 +90,7 @@ public class OCVRP
 
 
         try {
-            Config config = getConfig(Utilities.getAllTextUTF8("E:/Git/BitBucket/jsprit-examples/src/main/java/com/jsontest/config/config.jsontest"));
+            Config config = getConfig(Utilities.getAllTextUTF8("src/main/java/com/config/config.json"));
             if (config.floyd.equals("yes")) hashTableCosts = newHashTableCosts; // set new HashTableCosts
         } catch (IOException e) {
             // hashTableCosts = newHashTableCosts; // set new HashTableCosts
