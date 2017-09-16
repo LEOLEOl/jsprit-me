@@ -1,0 +1,176 @@
+﻿{
+    "timeAtRequest": "1496016000",
+    "locations": [
+        {
+            "locationCode": "1",
+            "locationName": "157 PHAN DANG LUU, P.01, Q.PHU NHUAN, TP.HO CHI MINH",
+            "timeWindows": [
+                {
+                    "start": 1496102400,
+                    "end": 1496188800
+                }
+            ]
+        },
+        {
+            "locationCode": "2",
+            "locationName": "227 Nguyễn Văn Cừ, Quận 5, TP.HO CHI MINH",
+            "timeWindows": [
+                {
+                    "start": 1496102400,
+                    "end": 1496188800
+                }
+            ]
+        },
+        {
+            "locationCode": "3",
+            "locationName": "153 Nguyễn Chí Thanh, Quận 5, TP.HO CHI MINH",
+            "timeWindows": [
+                {
+                    "start": 1496102400,
+                    "end": 1496188800
+                }
+            ]
+        },
+        {
+            "locationCode": "4",
+            "locationName": "364 Cộng Hòa, Quận Tân Bình, TP.HO CHI MINH",
+            "timeWindows": [
+                {
+                    "start": 1496102400,
+                    "end": 1496275200
+                }
+            ]
+        }
+    ],
+    "shipments": [
+        {
+            "shipCode": "s3",
+            "pickupServiceTime": "0.0",
+            "deliveryServiceTime": "0.0",
+            "weight": "1.0",
+            "volume": "0.25",
+            "pickupLocationCode": "1",
+            "deliveryLocationCode": "4",
+            "pickupTimeWindows": [],
+            "deliveryTimeWindows": []
+        }
+    ],
+    "costUnits": [
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "1",
+            "distance": "0.0",
+            "travelTime": "1.0"
+        },
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "2",
+            "distance": "0.0",
+            "travelTime": "3.0"
+        },
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "3",
+            "distance": "0.0",
+            "travelTime": "100.0"
+        },
+        {
+            "srcLocationCode": "0",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "0.0"
+        },
+        {
+            "srcLocationCode": "1",
+            "desLocationCode": "2",
+            "distance": "0.0",
+            "travelTime": "1.0"
+        },
+        {
+            "srcLocationCode": "1",
+            "desLocationCode": "3",
+            "distance": "0.0",
+            "travelTime": "10.0"
+        },
+        {
+            "srcLocationCode": "1",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "100.0"
+        },
+        {
+            "srcLocationCode": "2",
+            "desLocationCode": "3",
+            "distance": "0.0",
+            "travelTime": "1.0"
+        },
+        {
+            "srcLocationCode": "2",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "100.0"
+        },
+        {
+            "srcLocationCode": "3",
+            "desLocationCode": "4",
+            "distance": "0.0",
+            "travelTime": "0.0"
+        }
+    ],
+    "vehicles": [
+        {
+            "id": "1",
+            "startLocationCode": "0",
+            "endLocationCode": "3",
+            "maxWeight": 5.0,
+            "minWeight": 0.0,
+            "maxVolume": 5.0,
+            "minVolume": 0.0,
+            "fixedCost": 10,
+            "perWaitingTimeCost": 1.0,
+            "perServiceTimeCost": 1.0,
+            "breakTime": {
+                "breakCode": "2",
+                "serviceTime": 10,
+                "timeWindows": []
+            }
+        },
+        {
+            "id": "2",
+            "startLocationCode": "0",
+            "endLocationCode": "3",
+            "maxWeight": 3.0,
+            "minWeight": 0.0,
+            "maxVolume": 5.0,
+            "minVolume": 0.0,
+            "fixedCost": 10,
+            "perWaitingTimeCost": 1.0,
+            "perServiceTimeCost": 1.0,
+            "breakTime": {
+                "breakCode": "2",
+                "serviceTime": 10,
+                "timeWindows": []
+            }
+        }
+    ],
+    "wayPoints": [
+        {
+            "from": "0",
+            "to": "4",
+            "midPoints": [
+                {
+                    "point":"A2",
+                    "distanceFromRoot":0
+                },
+                {
+                    "point":"A3",
+                    "distanceFromRoot":0
+                },
+                {
+                    "point":"A4",
+                    "distanceFromRoot":0
+                }
+            ]
+        }
+    ]
+}
