@@ -62,7 +62,7 @@ public class JsonTest extends TestCase{
     @Test
     public void testOverallHandledErrorJson()
     {
-        final File folder = new File("src/main/java/com/jsontest/HandledErrorJson");
+        final File folder = new File("src/main/java/com/jsontest/handlederrorjson");
         File[] listFiles = folder.listFiles();
         if (listFiles == null) return;
         for (final File fileEntry: listFiles)
