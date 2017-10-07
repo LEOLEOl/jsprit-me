@@ -1,4 +1,4 @@
-package com.ourcode.models.input;
+package com.ourcode.models.process;
 
 import com.ourcode.models.input.OCShipment;
 

@@ -3,7 +3,7 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ourcode.exceptions.OurException;
-import com.ourcode.models.output.OCVRP;
+import com.ourcode.models.process.OCVRP;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

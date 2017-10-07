@@ -1,7 +1,7 @@
 package com.ourcode.models.algorithms;
 
 import com.ourcode.models.input.OCShipment;
-import com.ourcode.models.input.ShipmentBreakdown;
+import com.ourcode.models.process.ShipmentBreakdown;
 
 import java.util.ArrayList;
 

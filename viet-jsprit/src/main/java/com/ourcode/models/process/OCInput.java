@@ -1,4 +1,4 @@
-package com.ourcode.models.output;
+package com.ourcode.models.process;
 
 import com.google.gson.annotations.SerializedName;
 import com.ourcode.exceptions.OurException;

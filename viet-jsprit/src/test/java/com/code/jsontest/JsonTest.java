@@ -3,7 +3,7 @@ package com.code.jsontest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ourcode.exceptions.OurException;
-import com.ourcode.models.output.OCVRP;
+import com.ourcode.models.process.OCVRP;
 import com.ourcode.models.utilities.Utilities;
 import junit.framework.TestCase;
 import org.junit.Test;

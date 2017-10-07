@@ -16,14 +16,6 @@ public class OurException extends Exception {
     @SerializedName("details")
     public String details;
 
-    // 0 - Error Json,  1 - TimeAtRequest, 2 - Locations, 3 - Shipments, 4 - CostUnits, 5- Vehicles
-
-//    public int getErrorCode()
-//    {
-//        return errorCode;
-//    }
-
-
     public OurException(int errorCode, String detailMessage) {
         super(detailMessage);
         this.errorCode = errorCode;

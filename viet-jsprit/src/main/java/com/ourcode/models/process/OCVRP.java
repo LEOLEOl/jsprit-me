@@ -1,4 +1,4 @@
-package com.ourcode.models.output;
+package com.ourcode.models.process;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +19,10 @@ import com.ourcode.exceptions.OurException;
 import com.ourcode.models.algorithms.Floyd;
 import com.ourcode.models.configuration.Config;
 import com.ourcode.models.input.*;
+import com.ourcode.models.output.OCJobAtLocation;
+import com.ourcode.models.output.OCJobRound;
+import com.ourcode.models.output.OCOutput;
+import com.ourcode.models.output.OCTransport;
 import com.ourcode.models.utilities.Utilities;
 import javafx.util.Pair;
 
