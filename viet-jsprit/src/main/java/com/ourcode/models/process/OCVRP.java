@@ -42,9 +42,6 @@ public class OCVRP
     @SerializedName("shipments")
     private ArrayList<OCShipment> shipments;
 
-    @SerializedName("pickups")
-    private ArrayList<OCServicePickup> pickups;
-
     @SerializedName("costUnits")
     private ArrayList<OCCostUnit> costUnits;
 
@@ -54,9 +51,14 @@ public class OCVRP
     @SerializedName("wayPoints")
     private ArrayList<WayPoint> wayPoints;
 
+    // Another attributes
+
     private Hashtable<Pair, Pair> hashTableCosts;
 
     private Floyd floyd;
+
+    @SerializedName("pickups")
+    private ArrayList<OCServicePickup> pickups;
 
 
     // Getter and Setter method
@@ -97,11 +99,8 @@ public class OCVRP
             Config config = getConfig(Utilities.getAllTextUTF8("src/main/java/com/config/config.json"));
             if (config.floyd.equals("yes")) hashTableCosts = newHashTableCosts; // set new HashTableCosts
         } catch (IOException e) {
-            // hashTableCosts = newHashTableCosts; // set new HashTableCosts
             e.printStackTrace();
         }
-
-
     }
 
     public void addVehicle(OCVehicle ocVehicle)
@@ -112,88 +111,54 @@ public class OCVRP
     public OCVRP()
     {}
 
-//    public static String solve (String jsonStringInput) throws OurException {
-//        OCVRP ocvrp = OCVRP.buildVRPFromJson(jsonStringInput);
-//        // Create Algorithm
-//        VehicleRoutingProblem.Builder vrpBuilder = VehicleRoutingProblem.Builder.newInstance().setFleetSize(VehicleRoutingProblem.FleetSize.FINITE);
-//
-//        // Add vehicles
-//        for (OCVehicle vehicle: ocvrp._getVehicles())
-//            vrpBuilder.addVehicle(vehicle.build()._getJ_vehicle());
-//
-//        // Add shipments
-//        for (OCShipment shipment: ocvrp._getShipments())
-//            vrpBuilder.addJob(shipment.build()._getJ_service());
-//
-//        // Add fake pickups
-//        for (OCServicePickup pickup: ocvrp._getPickups())
-//            vrpBuilder.addJob(pickup.build()._getJ_pickup());
-//
-//        // Create Cost Matrix, symmetric
-//        VehicleRoutingTransportCostsMatrix.Builder costMatrixBuilder = VehicleRoutingTransportCostsMatrix.Builder.newInstance(false);
-//        // Build Cost Matrix
-//        VehicleRoutingTransportCosts costMatrix = buildCostHashTable(ocvrp, costMatrixBuilder);
-//        // Set Cost Matrix
-//        vrpBuilder.setRoutingCost(costMatrix);
-//
-//        // Build VRP
-//        VehicleRoutingProblem vrp = vrpBuilder.build();
-//        // Create algorithm
-//        VehicleRoutingAlgorithm vra = Jsprit.createAlgorithm(vrp);
-//        // Find solutions
-//        Collection<VehicleRoutingProblemSolution> solutions = vra.searchSolutions();
-//        // Choose the best one.
-//        VehicleRoutingProblemSolution solution = Solutions.bestOf(solutions);
-//
-//        // Get output from VRP's solution
-//        OCOutput ocOutput = getOutput(solution, ocvrp);
-//
-//        // Parse to Output to Json string to return.
-//        Gson gsonOutput = new Gson();
-//        String jsonStringOutput = gsonOutput.toJson(ocOutput);
-//        return  jsonStringOutput;
-//    }
+    public Object solveJson(String jsonInput) throws OurException {
+        OCVRP ocvrp = buildVRPFromJson(jsonInput); // create our VRP
 
-    public static Object solve (String jsonStringInput) throws OurException {
-        OCVRP ocvrp = OCVRP.buildVRPFromJson(jsonStringInput);
-        // Create Algorithm
-        VehicleRoutingProblem.Builder vrpBuilder = VehicleRoutingProblem.Builder.newInstance().setFleetSize(VehicleRoutingProblem.FleetSize.FINITE);
+        // Push ocvrp to JSP and get the solution.
+        VehicleRoutingProblemSolution vrpSol = pushToJSP(ocvrp);
 
-        // Add vehicles
-        for (OCVehicle vehicle: ocvrp._getVehicles())
-            vrpBuilder.addVehicle(vehicle.build()._getJ_vehicle());
-
-        // Add shipments
-        for (OCShipment shipment: ocvrp._getShipments())
-            vrpBuilder.addJob(shipment.build()._getJ_service());
-
-        // Add fake pickups, wayPoints
-        for (OCServicePickup pickup: ocvrp._getPickups())
-            vrpBuilder.addJob(pickup.build()._getJ_pickup());
-
-        // Create Cost Matrix, symmetric
-        VehicleRoutingTransportCostsMatrix.Builder costMatrixBuilder = VehicleRoutingTransportCostsMatrix.Builder.newInstance(false);
-        // Build Cost Matrix
-        VehicleRoutingTransportCosts costMatrix = buildCostHashTable(ocvrp, costMatrixBuilder);
-        // Set Cost Matrix
-        vrpBuilder.setRoutingCost(costMatrix);
-
-        // Build VRP
-        VehicleRoutingProblem vrp = vrpBuilder.build();
-        // Create algorithm
-        VehicleRoutingAlgorithm vra = Jsprit.createAlgorithm(vrp);
-        // Find solutions
-        Collection<VehicleRoutingProblemSolution> solutions = vra.searchSolutions();
-        // Choose the best one.
-        VehicleRoutingProblemSolution solution = Solutions.bestOf(solutions);
-
-        // Get output from VRP's solution
-        OCOutput ocOutput = getOutput(solution, ocvrp);
-
-        return ocOutput;
+        // Return OCOutput from the solution
+        return getOCOutputFromSol(vrpSol, ocvrp);
     }
 
-    private static Hashtable<Integer, Job> getJobs(VehicleRoutingProblemSolution solution)
+    private VehicleRoutingProblemSolution pushToJSP(OCVRP ocvrp) throws OurException {
+        VehicleRoutingProblem.Builder vrpBuilder = VehicleRoutingProblem.Builder.newInstance()
+            .setFleetSize(VehicleRoutingProblem.FleetSize.FINITE); // Create JSP vrpBuilder
+
+        // add parameters from ocvrp to vrpBuilder and build
+        addParametersToVRPBuilder(ocvrp, vrpBuilder); // add parameters (vehicles, shipment, costMatrix, ...) to vrpBuilder
+        VehicleRoutingProblem vrp = vrpBuilder.build(); // Build JSP vrp
+
+        // get solution from vrp
+        return getSolutionFromVRPBuilder(vrp);
+    }
+
+    private VehicleRoutingProblemSolution getSolutionFromVRPBuilder(VehicleRoutingProblem vrp) {
+        VehicleRoutingAlgorithm vrpAlg = Jsprit.createAlgorithm(vrp); // Create algorithm vrpAlg
+        Collection<VehicleRoutingProblemSolution> solutions = vrpAlg.searchSolutions(); // Find solutions from vrpAlg
+        return Solutions.bestOf(solutions); // get the best
+    }
+
+    private void addParametersToVRPBuilder(OCVRP ocvrp, VehicleRoutingProblem.Builder vrpBuilder) throws OurException {
+        for (OCVehicle vehicle: ocvrp._getVehicles()) // Add vehicles to vrpBuilder
+            vrpBuilder.addVehicle(vehicle.build()._getJ_vehicle());
+
+        for (OCShipment shipment: ocvrp._getShipments()) // Add shipments to vrpBuilder
+            vrpBuilder.addJob(shipment.build()._getJ_service());
+
+        for (OCServicePickup pickup: ocvrp._getPickups()) // Add fake pickups, wayPoints to vrpBuilder
+            vrpBuilder.addJob(pickup.build()._getJ_pickup());
+
+        // Create costMatrixBuilder, not symmetric
+        VehicleRoutingTransportCostsMatrix.Builder costMatrixBuilder = VehicleRoutingTransportCostsMatrix.Builder.newInstance(false);
+
+        // Build costMatrix from costMatrixBuilder
+        VehicleRoutingTransportCosts costMatrix = buildCostHashTable(ocvrp, costMatrixBuilder);
+
+        vrpBuilder.setRoutingCost(costMatrix); // Set costMatrix to vrpBuilder
+    }
+
+    private Hashtable<Integer, Job> getJobs(VehicleRoutingProblemSolution solution)
     {
         // Job listJob[] = new Job[nShip - solution.getUnassignedJobs().size()];
         //Job listJob[] = new Job[nShip];
@@ -205,7 +170,7 @@ public class OCVRP
         return hashTableJob;
     }
 
-    private static OCOutput getOutput(VehicleRoutingProblemSolution solution, OCVRP ocvrp) {
+    private OCOutput getOCOutputFromSol(VehicleRoutingProblemSolution solution, OCVRP ocvrp) {
         OCOutput ocOutput = new OCOutput();
 
         // Get list jobs of vehicles.
@@ -214,23 +179,23 @@ public class OCVRP
         for (VehicleRoute vehicleRoute: solution.getRoutes()) {
             OCTransport ocTransport = new OCTransport(vehicleRoute.getVehicle().getId());
 
-            // Add job code of each vehicle
-            addJobCode(vehicleRoute, ocTransport);
-            // Add job round of each vehicle
-            addJobRound(ocvrp, hashTableJob, vehicleRoute, ocTransport);
+
+            addJobCode(vehicleRoute, ocTransport); // Add job code of each vehicle
+
+            addJobRound(ocvrp, hashTableJob, vehicleRoute, ocTransport);  // Add job round of each vehicle
 
             ocOutput.addTransport(ocTransport);
         }
         return ocOutput;
     }
 
-    private static String getNormalizeJobCode(String jobCode)
+    private String getNormalizeJobCode(String jobCode)
     {
         int p = jobCode.indexOf("---");
         return p > -1 ? jobCode.substring(0, p) : jobCode;
     }
 
-    private static void addJobRound(OCVRP ocvrp, Hashtable<Integer, Job> hashTableJobs, VehicleRoute vehicleRoute, OCTransport ocTransport) {
+    private void addJobRound(OCVRP ocvrp, Hashtable<Integer, Job> hashTableJobs, VehicleRoute vehicleRoute, OCTransport ocTransport) {
         String prevLocation = vehicleRoute.getStart().getLocation().getId();
         String nextLocation = prevLocation; // to trick below function
 
@@ -268,45 +233,43 @@ public class OCVRP
         addJobRoundsToTransport(ocvrp, ocTransport, ocJobRound);
     }
 
-    private static void addJobRoundsToTransport(OCVRP ocvrp, OCTransport ocTransport, OCJobRound ocJobRound) {
+    private void addJobRoundsToTransport(OCVRP ocvrp, OCTransport ocTransport, OCJobRound ocJobRound) {
         ArrayList<OCJobRound> ocJobRounds = OCJobRound.getRealJobRounds(ocJobRound, ocvrp._getFloyd().getHashTableMatrix(), ocvrp._getFloyd().getHashTableTrace());
         for (OCJobRound jobRound: ocJobRounds) ocTransport.addJobRound(jobRound);
     }
 
-    private static void addJobCode(VehicleRoute vehicleRoute, OCTransport ocTransport) {
+    private void addJobCode(VehicleRoute vehicleRoute, OCTransport ocTransport) {
         Collection<Job> jobs = vehicleRoute.getTourActivities().getJobs();
         for (Job job: jobs)
             if (job instanceof Shipment || job instanceof Break)
                 ocTransport.addJobCode(getNormalizeJobCode(job.getId()));
     }
 
-    public static OCVRP buildVRPFromJson(String jsonStringInput) throws OurException
-    {
-        OCInput ocInput;
+    public OCVRP buildVRPFromJson(String jsonStringInput) throws OurException {
+        OCInput input;
         try {
-            ocInput =  getInput(jsonStringInput); // Get Input Json
+            input = parseJsonToOCInput(jsonStringInput);
         }
         catch (Exception e)
         {
             throw new OurException(0, "Wrong JSON Format");
         }
-        return ocInput.checkAndGetOCVRP();
+        return input.checkAndGetOCVRP();
     }
 
-    public static OCInput getInput(String jsonStringInput) {
+    public OCInput parseJsonToOCInput(String strInput) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gsonInput = gsonBuilder.create();
-        return gsonInput.fromJson(jsonStringInput, OCInput.class);
+        return gsonInput.fromJson(strInput, OCInput.class);
     }
 
-    public static Config getConfig(String jsonStringInput) {
+    public Config getConfig(String jsonStringInput) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gsonInput = gsonBuilder.create();
         return gsonInput.fromJson(jsonStringInput, Config.class);
     }
 
-
-    public static VehicleRoutingTransportCosts buildCostMatrix(ArrayList<OCCostUnit> ocCostUnits, VehicleRoutingTransportCostsMatrix.Builder costMatrixBuilder) throws OurException {
+    public VehicleRoutingTransportCosts buildCostMatrix(ArrayList<OCCostUnit> ocCostUnits, VehicleRoutingTransportCostsMatrix.Builder costMatrixBuilder) throws OurException {
         try {
             for (OCCostUnit ocCostUnit: ocCostUnits) {
                 costMatrixBuilder.addTransportDistance(ocCostUnit.getSrcLocationCode(), ocCostUnit.getDesLocationCode(), ocCostUnit.getDistance());
@@ -319,7 +282,7 @@ public class OCVRP
         }
     }
 
-    public static VehicleRoutingTransportCosts buildCostHashTable(OCVRP ocvrp, VehicleRoutingTransportCostsMatrix.Builder costMatrixBuilder) throws OurException {
+    public VehicleRoutingTransportCosts buildCostHashTable(OCVRP ocvrp, VehicleRoutingTransportCostsMatrix.Builder costMatrixBuilder) throws OurException {
         Hashtable hashTableCosts = ocvrp._getHashTableCosts();
         try {
             Set<Pair> keys = hashTableCosts.keySet();
@@ -337,4 +300,5 @@ public class OCVRP
             throw new OurException(-1, "Wrong CostMatrix");
         }
     }
+
 }

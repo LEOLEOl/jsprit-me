@@ -36,12 +36,12 @@ public class LtlAPI extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String jsonStringInput = ShareInfo.extractPostRequestBody(req), jsonStringOutput;
+        String jsonInput = ShareInfo.extractPostRequestBody(req), jsonOutput;
         Object obj;
         Gson gson;
 
         try {
-            obj = OCVRP.solve(jsonStringInput);
+            obj = new OCVRP().solveJson(jsonInput);
             gson = new GsonBuilder().create();
         }
         catch (OurException e) {
@@ -49,13 +49,13 @@ public class LtlAPI extends HttpServlet {
             gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         }
 
-        jsonStringOutput = gson.toJson(obj);
+        jsonOutput = gson.toJson(obj);
 
-        // Output
+        // Set output contents and properties
         resp.setContentType("application/jsontest;charset=utf-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         PrintWriter writer = resp.getWriter();
-        writer.printf(jsonStringOutput);
+        writer.printf(jsonOutput);
     }
 }
 

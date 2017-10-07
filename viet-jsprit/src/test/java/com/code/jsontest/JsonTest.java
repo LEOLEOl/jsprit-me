@@ -24,7 +24,7 @@ public class JsonTest extends TestCase{
             Gson gson;
 
             try {
-                obj = OCVRP.solve(jsonStringInput);
+                obj = new OCVRP().solveJson(jsonStringInput);
                 gson = new GsonBuilder().create();
                 ret = 0;
             }
